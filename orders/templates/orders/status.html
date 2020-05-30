@@ -1,0 +1,106 @@
+{% extends 'orders/base.html' %}
+
+{% block main %}
+
+<br>
+<style>
+	body{
+	  background-color:#ebeff5;
+	}
+	#total-customers{
+	  background-color:#7cd1e0;
+	}
+	#total-orders{
+	  background-color:#4cb4c7;
+	}
+	#orders-delivered{
+	  background-color:#7abecc;
+	}
+
+	#orders-pending{
+	   background-color:#7cd1c0;
+	}
+</style>
+
+<div class="row">
+  <div class="col">
+        <div class="col-md">
+            <div class="card text-center text-white mb-3" id="total-customers">
+              <div class="card-header">
+                <h5 class="clar-title">Total Customers:</h5>
+              </div>
+                <div class="card-body">
+                   <h3 class="card-title">{{total_customers}}</h3>
+                </div>
+              </div>
+          </div>
+     </div>
+  <div class="col">
+      <div class="col-md">
+          <div class="card text-center text-white mb-3" id="total-orders">
+            <div class="card-header">
+              <h5 class="clar-title">Total Orders:</h5>
+            </div>
+              <div class="card-body">
+                 <h3 class="card-title">{{total_orders}}</h3>
+              </div>
+            </div>
+        </div>
+   </div>
+
+   <div class="col">
+         <div class="col-md">
+             <div class="card text-center text-white mb-3" id="orders-delivered">
+               <div class="card-header">
+                 <h5 class="clar-title">Orders Complete:</h5>
+               </div>
+                 <div class="card-body">
+                    <h3 class="card-title">{{Completed}}</h3>
+                 </div>
+               </div>
+           </div>
+      </div>
+
+
+    <div class="col">
+          <div class="col-md">
+              <div class="card text-center text-white mb-3" id="orders-pending">
+                <div class="card-header">
+                  <h5 class="clar-title">Orders Pending:</h5>
+                </div>
+                  <div class="card-body">
+                     <h3 class="card-title">{{pending}}</h3>
+                  </div>
+                </div>
+            </div>
+       </div>
+  </div>
+<!--Dashboard html-->
+<br>
+<div class="row">
+           <div class="col-md-12">
+          <h2 class="text-#1f1a0b">Order Lists:</h2>
+           <hr>
+            <div class="card card body">
+                   <table class="table table-sm">
+                      <tr>
+                        <th>User</th>
+                        <th>Date of Orders</th>
+                        <th>Status</th>                        
+                        <th>Remove</th>
+                      </tr>
+
+                      {% for order in orders %}
+                      <tr>
+                        <td>{{order.user}}</td>
+                        <td>{{order.date}}</td>
+                        <td>{{order.status}}</td>                        
+                        <td><a <a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Delete</a></td>
+                      </tr>
+                      {% endfor %}
+
+                    </table>
+              </div>
+          </div>
+    </div>
+{% endblock %}

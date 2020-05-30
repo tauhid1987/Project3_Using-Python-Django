@@ -1,0 +1,16 @@
+{% extends 'orders/base.html' %}
+
+{% block main %}
+<style>
+h1{color:red; font-size:50px;}
+h2{color:orange; font-size:35px;}
+</style>
+	<div id="box">
+		
+		<h1 >Thank you for your contribution {{order_total}}</h1>
+		<h2> Oder Succesfully Submit! You should receive a receipt to the email you provided shortly </h2>
+		<hr>
+		<a class="myButton" href="{% url 'index' %}">Back to index page</a>
+	</div>
+
+{% endblock main %}
