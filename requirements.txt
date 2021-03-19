@@ -45,7 +45,7 @@ more-itertools==8.2.0
 oauthlib==3.0.1
 packaging==20.3
 pep8==1.7.1
-pillow==6.2.1
+pillow==8.1.1
 pipenv==2018.11.26
 pluggy==0.13.1
 psycopg2==2.8.5
