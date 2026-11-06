@@ -1,0 +1,10 @@
+# secrets and local data: never commit these
+.env
+*.sqlite3
+db.sqlite3
+# python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+staticfiles/
