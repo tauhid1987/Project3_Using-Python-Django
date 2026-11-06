@@ -20,12 +20,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'i0&iq&e9u9h6(4_7%pt2s9)f=c$kso=k$c$w@fi9215s=1q0^d'
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']  # set it in the environment (Heroku config var or local shell); never commit it
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = ['project3pizzatauhid1987.herokuapp.com', '127.0.0.1']
+
+# Behind Heroku's HTTPS proxy: needed so Django 4+ treats requests as secure and accepts same-origin POSTs
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+CSRF_TRUSTED_ORIGINS = ['https://project3pizzatauhid1987.herokuapp.com']
 
 
 # Application definition
@@ -111,9 +115,9 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
-
 USE_TZ = True
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'  # matches the existing migrations
 
 
 # Static files (CSS, JavaScript, Images)
